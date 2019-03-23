@@ -5,9 +5,16 @@
 
 // GLOBAL VARIABLES
 // =======================================================================================
-var answerTime = 30;   // 30 seconds
-var activeQuestNo = 0; // Active question number
-var imagesPath = "assets/images/";
+var answerTime        = 10;   // 30 seconds for the user to answer the question
+var pauseTime         = 10;   // 10 seconds pause between questions; to show the answer
+var activeQuestNo     = 0; // Active question number
+var imagesPath        = "assets/images/";
+var countOkAnswers    = 0;
+var countWrongAnswers = 0;
+var countNotAnswered  = 0;
+var time              = 0;
+var intervalId;   //  Variable that will hold our setInterval that runs the timer
+var pauseId;      //  Variable for setTimeout ()
 
 
 // OBJECTS
@@ -52,15 +59,52 @@ var questions = [q1, q2, q3, q4, q5];
 
 // FUNCTIONS (Definition)
 // =======================================================================================
+function processEndGame () {
+    var m = $("#row4");   // Messages
+    m.append (" Number of correct answers:        " + countOkAnswers    );
+    m.append ("<br>");
+    m.append (" Number of wrong answers:          " + countWrongAnswers );
+    m.append ("<br>");
+    m.append (" Number of questions not answered: " + countNotAnswered  );
+    m.append ("<br>");
+    // aqui falta boton para restart
+};
+
+function processNextQuestion () {
+    clearTimeout (pauseId);
+    $("#row1").empty ();   // Time Remaining
+    $("#row2").empty ();   // Questions
+    $("#row4").empty ();   // Messages
+    $("#row5").empty ();   // Images
+
+    activeQuestNo ++;
+
+    if (activeQuestNo < questions.length) {
+        $("#row1").append ('<p class="centered"> Time Remaining: 00:' + answerTime + ' Seconds </p>');
+
+        q = $("<p>").text ( questions [activeQuestNo].question );
+        q.addClass ("centered");
+        $("#row2").append (q);
+
+        createAnswerRows ();
+
+        time = answerTime;
+        intervalId = setInterval (count, 1000);
+    } else {
+        processEndGame ();
+    }
+};
+
 function processLoadImage () {     // Answer image
-// <img src=imagesPath + questions [activeQuestNo].image>
-var image = $("<img>");
-image.attr ("src", imagesPath + questions [activeQuestNo].image );
-image.attr ("class", "img-fluid"); 
-image.attr ("alt", questions [activeQuestNo].arrAnswers [
-                   questions [activeQuestNo].correctAnswer
-                   ] );
-$("#imageContainer").append (image);
+    var image = $("<img>");
+    image.attr ("src", imagesPath + questions [activeQuestNo].image );
+    image.attr ("class", "img-fluid"); 
+    image.attr ("alt", questions [activeQuestNo].arrAnswers [
+                    questions [activeQuestNo].correctAnswer
+                    ] );
+    $("#imageContainer").append (image);
+    
+    pauseId = setTimeout (processNextQuestion, pauseTime * 1000);
 };
 
          /*   -  -  -  -  -  -  -  -  -  -   */
@@ -71,6 +115,34 @@ function rightAnswer () {
     a += "</h4>";
 
     return a;
+};
+
+         /*   -  -  -  -  -  -  -  -  -  -   */
+function loadTimeImage () {
+// 
+    var image = $("<img>");
+    image.attr ("src", imagesPath + "giphy.gif" );
+    image.attr ("class", "img-fluid"); 
+    image.attr ("alt", "Time out" );
+
+    $("#row4").append ( '<div class="card" style="max-width: 5rem;" id="imageAnswer"> </div>' );
+    $("#imageAnswer").append (image);
+};
+
+function processUserDidNotAnswer () {
+    var m;   // Message 
+    var a;   // Answer
+
+    loadTimeImage ();
+
+    m = $("#row4");   // Messages
+    m.append (" Time  O U T  ! ! ! ");
+    m.append ("<br>");
+    m.append (" The correct answer is:");
+
+    m.append ( rightAnswer () );
+    
+    countNotAnswered += 1;
 };
 
          /*   -  -  -  -  -  -  -  -  -  -   */
@@ -90,12 +162,14 @@ function processUserLoses () {
 
     loadWrongImage ();
 
-    m = $("#row4");
+    m = $("#row4");   // Messages
     m.append (" N o o o  ! ! ! ");
     m.append ("<br>");
     m.append (" The correct answer is:");
 
     m.append ( rightAnswer () );
+
+    countWrongAnswers += 1;
 };
 
          /*   -  -  -  -  -  -  -  -  -  -   */
@@ -115,15 +189,25 @@ function processUserWins () {
 
     loadOkImage ();
 
-    m = $("#row4");
+    m = $("#row4");   // Messages
     m.append (" Right ! ! ! ");
 
     m.append ( rightAnswer () );
+
+    countOkAnswers += 1;
 };
          /*   -  -  -  -  -  -  -  -  -  -   */
 
+function processNoAnswer () {
+    clearInterval (intervalId);
+    $("#r3Answers").empty ();   // Answers
+    processUserDidNotAnswer ();
+    processLoadImage ();
+};
+
 function processAnswer (answerNumber) {
-    $("#row3").empty ();   // Answers
+    clearInterval (intervalId);
+    $("#r3Answers").empty ();   // Answers
     if (answerNumber == questions [activeQuestNo].correctAnswer) {
         processUserWins ();
     } else {
@@ -131,6 +215,41 @@ function processAnswer (answerNumber) {
     }
     processLoadImage ();
 };
+
+/* =======================  Time  ======================= */
+function timeConverter(t) {
+    //  Takes the current time in seconds and convert it to minutes and seconds (mm:ss).
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+  
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+  
+    if (minutes === 0) {
+      minutes = "00";
+    }
+    else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+  
+    return minutes + ":" + seconds;
+  }
+  
+  
+function count() {
+    var t = timeConverter (time);
+
+    $("#row1").html ( '<p class="centered"> Time Remaining: ' + t + ' Seconds </p>' ); 
+
+    if (time > 0) {
+        time --;
+    } else {
+        processNoAnswer ();
+    }
+  }
+ /* =======================  Time  ======================= */
+ 
 
 function createAnswerRows () {
     var a;   // Answers
@@ -150,13 +269,16 @@ function iniciar () {
 
     $("#start").empty ();   // Deletes Start button
 
-    $("#row1").append ('<p class="centered"> Time Remaining: __ Seconds </p>');
+    $("#row1").append ('<p class="centered"> Time Remaining: 00:' + answerTime + ' Seconds </p>');
 
     q = $("<p>").text ( questions [activeQuestNo].question );
     q.addClass ("centered");
     $("#row2").append (q);
 
     createAnswerRows ();
+
+    time = answerTime;
+    intervalId = setInterval (count, 1000);
 };
 
 
