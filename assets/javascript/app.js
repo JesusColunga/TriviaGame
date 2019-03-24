@@ -1,6 +1,6 @@
 /* app.js       */
 /* Trivia Game  */
-/* 22/Mar/2019  */
+/* 23/Mar/2019  */
 
 
 // GLOBAL VARIABLES
@@ -69,7 +69,7 @@ function processEndGame () {
     m.append ("<br>");
     m.append (" Number of questions not answered: " + countNotAnswered  );
     m.append ("<br>");
-    // aqui falta boton para restart
+    
     var b = $("#imageContainer");   // Restart button
     b.append ('<button type="button" class="btn btn-warning btn-lg" id="restartBtn"> R e s t a r t </button>');
 };
@@ -88,6 +88,7 @@ function processNextQuestion () {
 
         q = $("<p>").text ( questions [activeQuestNo].question );
         q.addClass ("centered");
+        q.attr ("id", "questionPadding");
         $("#row2").append (q);
 
         createAnswerRows ();
@@ -134,16 +135,17 @@ function loadTimeImage () {
 };
 
 function processUserDidNotAnswer () {
-    var m;   // Message 
-    var a;   // Answer
+    var m  = $("#row4");   // Message 
+    var sp = $("<span>");  // <span> for left padding
 
     loadTimeImage ();
 
-    m = $("#row4");   // Messages
-    m.append (" Time  O U T  ! ! ! ");
-    m.append ("<br>");
-    m.append (" The correct answer is:");
+    sp.addClass ("pl-4");
+    sp.append (" Time  O U T  ! ! ! ");
+    sp.append ("<br>");
+    sp.append (" The correct answer is: ");
 
+    m.append (sp);
     m.append ( rightAnswer () );
     
     countNotAnswered += 1;
@@ -161,16 +163,17 @@ function loadWrongImage () {
 };
 
 function processUserLoses () {
-    var m;   // Message 
-    var a;   // Answer
+    var m  = $("#row4");   // Message 
+    var sp = $("<span>");  // <span> for left padding
 
     loadWrongImage ();
 
-    m = $("#row4");   // Messages
-    m.append (" N o o o  ! ! ! ");
-    m.append ("<br>");
-    m.append (" The correct answer is:");
+    sp.addClass ("pl-4");
+    sp.append ("   N o o o  ! ! !  ");
+    sp.append ("<br>");
+    sp.append (" The correct answer is: ");
 
+    m.append (sp);
     m.append ( rightAnswer () );
 
     countWrongAnswers += 1;
@@ -194,7 +197,7 @@ function processUserWins () {
     loadOkImage ();
 
     m = $("#row4");   // Messages
-    m.append (" Right ! ! ! ");
+    m.append (" <p class='pl-4'> Right ! ! ! </p> ");
 
     m.append ( rightAnswer () );
 
@@ -282,6 +285,7 @@ function iniciar () {
 
     q = $("<p>").text ( questions [activeQuestNo].question );
     q.addClass ("centered");
+    q.attr ("id", "questionPadding");
     $("#row2").append (q);
 
     createAnswerRows ();

@@ -1,6 +1,6 @@
 <!--  index.html   -->
 <!--  Trivia Game  -->
-<!--  21/Mar/2019  -->
+<!--  23/Mar/2019  -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,10 +18,6 @@
     <!-- Link to external CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <!-- Link to google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">   <!-- Header -->
-    <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">  <!-- Footer -->
-
     <!-- Link to JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -33,7 +29,6 @@
 
 
 <body>
-    
     <header>
         <div id="topHeader">
           <img src="assets/images/YpJilaXXT8qJR6HQVKFM_ISM_Trivia.gif" class="img-fluid" id="topHeaderImg">
@@ -42,7 +37,6 @@
 
     <div class="container">
         <div class="text-center" id="start">
-                <!-- button type="button" class="btn btn-outline-primary btn-lg" id="startBtn"> S t a r t </button -->
                 <button type="button" class="btn btn-danger btn-lg" id="startBtn"> S t a r t </button>
         </div>
 
@@ -53,10 +47,8 @@
         </div>
     
         <div class="row" id="row3">           <!-- Row 3: Answers -->
-
             <div class="btn-group-vertical btn-group-lg centered answer" role="group" aria-label="Available Answers" id="r3Answers">
             </div>
-
         </div>
 
         <div class="row" id="row4">           <!-- Row 4: Messages -->
@@ -64,56 +56,9 @@
 
         <div class="row" id="row5">           <!-- Row 5: Images -->
             <div class="card centered" style="max-width: 12rem;" id="imageContainer">
-                    
             </div>
         </div>
-<!-- 
-    <img src="assets/images/kazaam.jpg" class="img-fluid">
-    ---------------------------
-        <div class="row" id="row5">           <!-- Row 5: Images -- >
-            <div class="card  border-success" style="max-width: 20rem;">
-                    <div class="card-body">
-                        <img src="assets/images/kazaam.jpg" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-    
-    ================================================
-        imageCard = $("<div>");
-        imageCard.attr ("class", "card  border-success  mr-3  mb-3  col-2");
-        imageCard.attr ("style", "max-width: 9rem;  background: black;")
-        imageCard.attr ("id", "imgCard");   
-        imageCard.attr ("data-indexArrChars", indexChar);   // Pointer to the position in the array "characters".
-        ------------------
-        imgCrdBody = $("<div>");
-        imgCrdBody.attr ("class", "card-body  text-center  py-1");
-        imgCrdBody.attr ("style", "background:" + backgrColor); 
-        imgCrdBody.append (
-            game.createImage (indexChar, area) 
-        ); 
-        ------------------
-        var image = $("<img>");
-        image.attr ("src", imagesPath + characters [indexChar].image);
-        image.attr ("class", "characterImage"); 
-        image.attr ("alt", characters [indexChar].name);
-
-
--->
     </div>
-<!-- 
-    <footer>
-        <hr>
-        <h6 > Developed in PROAPI </h6>    
-        <span class="text-muted text-right"> Developed in PROAPI </span>
-        <h6 class="text-right" style="padding: 0 20px;"> Developed in PROAPI </h6>    
-        <p class="footerFont"> Developed in PROAPI </p>
-        <span class="text-right" style="padding: 0 20px;"> Developed in PROAPI </span>
-    </footer>   -- >
-
-    <footer class="footer">
-        <hr>
-        Developed in PROAPI
-    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -129,105 +74,3 @@
 </body>
 
 </html>
-
-<!--
-    =======================================================================================
-
-- Add a README.md to your repository describing the project. 
-
-- Add To Your Portfolio
-
-  ----------------------------------------------------------
-REFERENCIAS:
-- Preguntas
-https://trivia.fyi/
-
-- Gif Trivia del encabezado
-https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Fwww.ignitesocialmedia.com%2Fwp-content%2Fuploads%2F2018%2F02%2FYpJilaXXT8qJR6HQVKFM_ISM_Trivia.gif&imgrefurl=https%3A%2F%2Fwww.ignitesocialmedia.com%2Fsocial-media-promotion%2Fuse-trivia-engage-fans%2F&docid=yaDEsuvANovRWM&tbnid=AM8krXTDmVDI8M%3A&vet=10ahUKEwiCh4eRsJHhAhXB54MKHa1NC0cQMwhlKB8wHw..i&w=1200&h=628&safe=active&bih=589&biw=937&q=trivia%20images&ved=0ahUKEwiCh4eRsJHhAhXB54MKHa1NC0cQMwhlKB8wHw&iact=mrc&uact=8
-Ignite Social Media - The original social media agency | How To ...
-Ignite Social Media
-YpJilaXXT8qJR6HQVKFM_ISM_Trivia
-
-- Imagen de fondo azul con signos de interrogación
-https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Fpreviews.123rf.com%2Fimages%2Fnomad_s0ul%2Fnomad_s0ul1606%2Fnomad_s0ul160600104%2F58727272-seamless-question-mark-faq-pattern-background.jpg&imgrefurl=https%3A%2F%2Fwww.123rf.com%2Fphoto_58727272_stock-vector-seamless-question-mark-faq-pattern-background.html&docid=dhzYoEfK6gICdM&tbnid=LHtlwNmB6L55hM%3A&vet=10ahUKEwi_44rEwpHhAhXj64MKHXIMCO0QMwg_KAAwAA..i&w=1300&h=1300&safe=active&bih=589&biw=970&q=question%20mark%20background&ved=0ahUKEwi_44rEwpHhAhXj64MKHXIMCO0QMwg_KAAwAA&iact=mrc&uact=8#h=1300&imgdii=LHtlwNmB6L55hM:&vet=10ahUKEwi_44rEwpHhAhXj64MKHXIMCO0QMwg_KAAwAA..i&w=1300
-Seamless Question Mark Faq Pattern Background Royalty Free ...
-123RF.com
-Seamless Question Mark Faq Pattern Background Stock Vector - 58727272
-58727272-seamless-question-mark-faq-pattern-background.jpg
-
-- Fondo "Half-Rombes"
-https://leaverou.github.io/css3patterns/#half-rombes
-by Valentin Agachi
-Full Stack Engineer
-Professional Experience:
-
-VisWiz.io
-Plex
-Facebook
-Saltside
-Duego
-CodingHeads
-Email
-contact@agachi.name
-Location
-Tenerife, Spain
-CV
-Code
-Twitter
-
-- Shaquille O’Neal / Kazaam
-https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Fusatftw.files.wordpress.com%2F2016%2F04%2Fkazaam.jpg%3Fw%3D1000%26h%3D1167&imgrefurl=https%3A%2F%2Fftw.usatoday.com%2F2016%2F04%2Fshaq-kazaam-ellen-show-dr-j&docid=wZanhWsy46LvgM&tbnid=mYKeKXumUnEvfM%3A&vet=10ahUKEwjzmt2pqpbhAhVGXKwKHWEtBwMQMwhHKAgwCA..i&w=1000&h=1167&hl=es-419&safe=active&bih=565&biw=999&q=shaquille%20o%E2%80%99neal%20kazaam&ved=0ahUKEwjzmt2pqpbhAhVGXKwKHWEtBwMQMwhHKAgwCA&iact=mrc&uact=8
-Shaq made a Kazaam joke after Ellen surprised him by bringing out ...
-For The Win - USA Today
-DATE TAKEN: N/A ----- "Kazaam," movie
-kazaam.jpg
-
-- New Mexico
-https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffe%2FNew_Mexico_in_United_States.svg%2F2000px-New_Mexico_in_United_States.svg.png&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FNew_Mexico&docid=i8BGb_8XysP5eM&tbnid=lOzcituyjSAf9M%3A&vet=10ahUKEwiDuKC_q5bhAhUGEawKHVe4DSYQMwhKKAkwCQ..i&w=2000&h=1238&hl=es-419&safe=active&bih=565&biw=999&q=New%20Mexico&ved=0ahUKEwiDuKC_q5bhAhUGEawKHVe4DSYQMwhKKAkwCQ&iact=mrc&uact=8
-New Mexico - Wikipedia
-Wikipedia
-Map of the United States with New Mexico highlighted
-2000px-New_Mexico_in_United_States.svg.png
-
-- South Korea
-https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Fwww.graphicmaps.com%2Fr%2Fw1047-h739-c1047x739-q100%2Fimages%2Fmaps%2FKR.jpg&imgrefurl=https%3A%2F%2Fwww.graphicmaps.com%2Fsouth-korea&docid=A-YKpg9qUK9XhM&tbnid=7wbNNQg1EfU68M%3A&vet=10ahUKEwia0ZzmrJbhAhUNXa0KHcMlCeMQMwh5KC0wLQ..i&w=1047&h=739&hl=es-419&safe=active&bih=521&biw=999&q=South%20Korea&ved=0ahUKEwia0ZzmrJbhAhUNXa0KHcMlCeMQMwh5KC0wLQ&iact=mrc&uact=8#h=739&imgdii=7wbNNQg1EfU68M:&vet=10ahUKEwia0ZzmrJbhAhUNXa0KHcMlCeMQMwh5KC0wLQ..i&w=1047
-South Korea - GraphicMaps.com
-GraphicMaps
-Map showing the location of South Korea
-KR.jpg
-
-- Brontë
-https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa9%2FPainting_of_Bront%25C3%25AB_sisters.png%2F250px-Painting_of_Bront%25C3%25AB_sisters.png&imgrefurl=https%3A%2F%2Fes.wikipedia.org%2Fwiki%2FFamilia_Bront%25C3%25AB&docid=gGHMXs4nSGbLfM&tbnid=42V9h9Ssl8HcjM%3A&vet=10ahUKEwjC0YnYrZbhAhUELKwKHYr3DDwQMwg_KAAwAA..i&w=250&h=359&hl=es-419&safe=active&bih=565&biw=999&q=Bront%C3%AB&ved=0ahUKEwjC0YnYrZbhAhUELKwKHYr3DDwQMwg_KAAwAA&iact=mrc&uact=8
-Familia Brontë - Wikipedia, la enciclopedia libre
-Wikipedia
-Painting of Brontë sisters.png
-250px-Painting_of_Brontë_sisters.png
-
-- IKEA
-https://www.google.com.mx/imgres?imgurl=http%3A%2F%2Fwww.trevellers.com%2Fwp-content%2Fuploads%2F2016%2F02%2FIkea-Netherlands.jpg&imgrefurl=http%3A%2F%2Fwww.trevellers.com%2Fshopping-in-the-netherlands-fun%2F&docid=GDSuZERKWZGqiM&tbnid=e9jFXlfVXdS1hM%3A&vet=10ahUKEwjNweaKr5bhAhUNnq0KHbGdBx8QMwhAKAEwAQ..i&w=500&h=233&hl=es-419&safe=active&bih=521&biw=999&q=ikea%20netherlands&ved=0ahUKEwjNweaKr5bhAhUNnq0KHbGdBx8QMwhAKAEwAQ&iact=mrc&uact=8
-Shopping in The Netherlands: Fun | Trevellers
-Trevellers
-Ikea Netherlands
-Ikea-Netherlands.jpg
-
-- Right image
-https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Findependenthomeschool.com%2Fwp-content%2Fuploads%2F2016%2F06%2Fmark-35780_960_720-e1464322717381.png&imgrefurl=https%3A%2F%2Findependenthomeschool.com%2Fwant-smarter-quit-trying-come-right-answer%2F&docid=CeCXxzHe0DZ-zM&tbnid=ZOD-7Ux3vdFqqM%3A&vet=10ahUKEwjgqNiX45bhAhVIlKwKHR6cBnAQMwg_KAMwAw..i&w=267&h=200&hl=es-419&safe=active&bih=526&biw=1097&q=right%20answer&ved=0ahUKEwjgqNiX45bhAhVIlKwKHR6cBnAQMwg_KAMwAw&iact=mrc&uact=8#h=200&imgdii=ZOD-7Ux3vdFqqM:&vet=10ahUKEwjgqNiX45bhAhVIlKwKHR6cBnAQMwg_KAMwAw..i&w=267
-Want to be Smarter? Quit Trying to Come Up with the Right Answer ...
-Independent Homeschool
-Quit Trying to Come Up with the Right Answer
-mark-35780_960_720-e1464322717381.png
-
-- Wrong image
-https://www.google.com.mx/imgres?imgurl=http%3A%2F%2Fwww.lionswhiskers.com%2Fimage%2F1095398_24641622.jpg&imgrefurl=http%3A%2F%2Fwww.lionswhiskers.com%2F2011%2F12%2Fis-there-only-one-right-answer.html&docid=56DckJ8VCsCv5M&tbnid=OQoIAWDehdzVCM%3A&vet=10ahUKEwjgqNiX45bhAhVIlKwKHR6cBnAQMwhBKAUwBQ..i&w=320&h=267&hl=es-419&safe=active&bih=526&biw=1097&q=right%20answer&ved=0ahUKEwjgqNiX45bhAhVIlKwKHR6cBnAQMwhBKAUwBQ&iact=mrc&uact=8
-Lion's Whiskers: Lion's Whiskers: Is There Only One Right Answer?
-Lion's Whiskers
-Here on the Lion's Whiskers blog we have had much to say, recently, on the topic of moral courage and morality – how it is learned, how we can help our ...
-1095398_24641622.jpg
-
-- reloj de arena
-https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2Fl4FGFE9n1nHFagC0E%2Fgiphy.gif&imgrefurl=https%3A%2F%2Fgiphy.com%2Fexplore%2Fsand-clock&docid=2Z8BxFhq_fB8wM&tbnid=27b9PLKHl70CsM%3A&vet=10ahUKEwj05ou7tpfhAhVOLKwKHaCfAIsQMwicAShQMFA..i&w=500&h=500&hl=es-419&safe=active&bih=526&biw=1097&q=sand%20clock&ved=0ahUKEwj05ou7tpfhAhVOLKwKHaCfAIsQMwicAShQMFA&iact=mrc&uact=8
-Sand clock GIFs - Get the best GIF on GIPHY
-Giphy
-giphy.gif
-
--->

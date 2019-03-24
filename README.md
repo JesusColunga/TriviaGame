@@ -12,6 +12,8 @@ this app was developed using the following tools:
 - CSS
 - Bootstrap
 - JavaScript
+- Questions
+  https://trivia.fyi/
 - Images:
 Header Trivia Gif
 YpJilaXXT8qJR6HQVKFM_ISM_Trivia.gif
