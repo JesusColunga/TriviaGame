@@ -15,6 +15,9 @@ var countNotAnswered  = 0;
 var time              = 0;
 var intervalId;   //  Variable that will hold our setInterval that runs the timer
 var pauseId;      //  Variable for setTimeout ()
+var winSoundVar      = new Audio('assets/sounds/Metroid_Door-Brandino480-995195341.mp3');
+var loseSoundVar     = new Audio('assets/sounds/foghorn-daniel_simon.mp3');
+var repeatedSoundVar = new Audio('assets/sounds/qubodup-cfork-ccby3-jump.ogg');
 
 
 // OBJECTS
@@ -139,6 +142,7 @@ function processUserDidNotAnswer () {
     var sp = $("<span>");  // <span> for left padding
 
     loadTimeImage ();
+    repeatedSoundVar.play ();
 
     sp.addClass ("pl-4");
     sp.append (" Time  O U T  ! ! ! ");
@@ -167,6 +171,7 @@ function processUserLoses () {
     var sp = $("<span>");  // <span> for left padding
 
     loadWrongImage ();
+    loseSoundVar.play ();
 
     sp.addClass ("pl-4");
     sp.append ("   N o o o  ! ! !  ");
@@ -195,6 +200,7 @@ function processUserWins () {
     var a;   // Answer
 
     loadOkImage ();
+    winSoundVar.play ();
 
     m = $("#row4");   // Messages
     m.append (" <p class='pl-4'> Right ! ! ! </p> ");

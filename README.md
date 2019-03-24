@@ -83,6 +83,19 @@ https://www.google.com.mx/imgres?imgurl=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F
 Sand clock GIFs - Get the best GIF on GIPHY
 Giphy
 
+- Sounds
+http://soundbible.com/2142-FogHorn-Barge.html
+About: A large barge blasts his fog horn to warn others of his arrival.
+Title: FogHorn Barge
+Uploaded: 8.1.16 
+License: Attribution 3.0 
+Recorded by Daniel Simon 
+---
+https://opengameart.org/content/cute-cartoon-jump-sound-effect
+qubodup-cfork-ccby3-jump.ogg
+---
+Metroid_Door-Brandino480-995195341.mp3
+
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
