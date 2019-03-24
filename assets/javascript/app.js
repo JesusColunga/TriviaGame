@@ -5,9 +5,9 @@
 
 // GLOBAL VARIABLES
 // =======================================================================================
-var answerTime        = 10;   // 30 seconds for the user to answer the question
+var answerTime        = 20;   // 30 seconds for the user to answer the question
 var pauseTime         = 10;   // 10 seconds pause between questions; to show the answer
-var activeQuestNo     = 0; // Active question number
+var activeQuestNo     = 0;    // Active question number
 var imagesPath        = "assets/images/";
 var countOkAnswers    = 0;
 var countWrongAnswers = 0;
@@ -61,6 +61,8 @@ var questions = [q1, q2, q3, q4, q5];
 // =======================================================================================
 function processEndGame () {
     var m = $("#row4");   // Messages
+    m.append ("<h5> These are the results </h5>");
+    m.append ("<br>");
     m.append (" Number of correct answers:        " + countOkAnswers    );
     m.append ("<br>");
     m.append (" Number of wrong answers:          " + countWrongAnswers );
@@ -68,6 +70,8 @@ function processEndGame () {
     m.append (" Number of questions not answered: " + countNotAnswered  );
     m.append ("<br>");
     // aqui falta boton para restart
+    var b = $("#imageContainer");   // Restart button
+    b.append ('<button type="button" class="btn btn-warning btn-lg" id="restartBtn"> R e s t a r t </button>');
 };
 
 function processNextQuestion () {
@@ -75,7 +79,7 @@ function processNextQuestion () {
     $("#row1").empty ();   // Time Remaining
     $("#row2").empty ();   // Questions
     $("#row4").empty ();   // Messages
-    $("#row5").empty ();   // Images
+    $("#imageContainer").empty ();   // Images
 
     activeQuestNo ++;
 
@@ -265,9 +269,14 @@ function createAnswerRows () {
 
 function iniciar () {
     var q;   // Question
-    activeQuestNo = 0;
-
-    $("#start").empty ();   // Deletes Start button
+    activeQuestNo     = 0;
+    countOkAnswers    = 0;
+    countWrongAnswers = 0;
+    countNotAnswered  = 0;
+    
+    $("#start").empty ();            // Deletes Start button
+    $("#row4").empty ();             // Messages
+    $("#imageContainer").empty ();   // Deletes Restart button
 
     $("#row1").append ('<p class="centered"> Time Remaining: 00:' + answerTime + ' Seconds </p>');
 
@@ -291,5 +300,9 @@ $(document).ready(function() {
 
     $(".answer").on ("click", ".btn", function () {
         processAnswer ( $(this).attr ("data-answ") );
+    });
+
+    $("#imageContainer").on ("click", "#restartBtn", function () {
+        iniciar ();
     });
 }); // document.ready
